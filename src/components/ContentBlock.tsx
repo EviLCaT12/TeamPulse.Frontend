@@ -1,4 +1,4 @@
-import type { Props } from "./RoorLayout"
+import type { Props } from "./RootLayout"
 
 export const ContentBlock = (props: Props) => {
     return (

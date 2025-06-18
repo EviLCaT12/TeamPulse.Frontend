@@ -1,4 +1,5 @@
 import { Button, Paper, TextField, Typography } from "@mui/material";
+import { ROUTES } from "../../app/routes";
 
 
 export function Login(){
@@ -17,7 +18,7 @@ export function Login(){
                         <Button variant="contained" className="primary" fullWidth> Войти</Button>
                     </form>
                     <div className="mt-4 text-center text-sm text-gray-600">
-                        Нет аккаунта? <a href={"/registration"} className="text-blue-600 hover:underline">Зарегистрироваться</a>
+                        Нет аккаунта? <a href={ROUTES.REGISTRATION} className="text-blue-600 hover:underline">Зарегистрироваться</a>
                     </div>
             </Paper>
         </div>

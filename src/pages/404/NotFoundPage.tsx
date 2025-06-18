@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
+import { ROUTES } from "../../app/routes";
 
 
 export function NotFound() {
@@ -26,7 +27,7 @@ export function NotFound() {
             <Button
                 variant="contained"
                 size="large"
-                onClick={() => navigate('/')}>
+                onClick={() => navigate(ROUTES.ROOT)}>
                     Вернуться на главную
             </Button>
         </div>
