@@ -5,7 +5,7 @@ export function Registration() {
 
 
     return (
-        <div className="flex felx-row justify-center items-center h-full bg-gray-100">
+        <div className="flex felx-row justify-center items-center h-screen bg-gray-100">
             <Paper
                 elevation={0}
                 className="p-8 w-full max-w-sm">
