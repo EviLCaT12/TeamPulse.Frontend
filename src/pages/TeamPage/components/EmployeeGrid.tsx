@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
-import { EmployeeCard, type EmployeeCardProps } from "./EmployeeCard";
+import { EmployeeCard } from "./EmployeeCard";
 import type React from "react";
+import type { User } from "../../../models/user";
 
 type EmployeeGridProps = {
-  employees: EmployeeCardProps[];
+  employees: User[];
 };
 
 
@@ -20,7 +21,7 @@ export const EmployeeGrid: React.FC<EmployeeGridProps> = ({ employees }) => {
         <EmployeeCard
           key={emp.id}
           id={emp.id}
-          name={emp.name}
+          userName={emp.userName}
           email={emp.email}
           position={emp.position}
         />

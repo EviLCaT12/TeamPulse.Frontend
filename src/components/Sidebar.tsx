@@ -1,11 +1,13 @@
 import { Button } from "@mui/material";
 import { NavLink } from "react-router";
+import { ROUTES } from "../app/routes";
 
 export function Sidebar() {
     const navItems = [
         { label: 'Главная', to: '/dashboard' },
         { label: 'Отчёты',  to: '/teams' },
         { label: 'Настройки', to: '/settings' },
+        { label: 'Профиль', to: ROUTES.PROFILE}
     ]
  
     return (

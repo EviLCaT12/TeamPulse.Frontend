@@ -6,17 +6,11 @@ import {
   Card,
 } from "@mui/material";
 import React from "react";
+import type { User } from "../../../models/user";
 
-export type EmployeeCardProps = {
-  id: string;
-  name: string;
-  email: string;
-  position: string;
-};
-
-export const EmployeeCard: React.FC<EmployeeCardProps> = ({
+export const EmployeeCard: React.FC<User> = ({
   id,
-  name,
+  userName,
   email,
   position,
 }) => {
@@ -28,7 +22,7 @@ export const EmployeeCard: React.FC<EmployeeCardProps> = ({
             gutterBottom
             sx={{ color: "text.secondary", fontSize: 14 }}
           >
-            {name}
+            {userName}
           </Typography>
           <Typography
             sx={{
