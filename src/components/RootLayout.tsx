@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import type React from "react";
-import { Sidebar } from "./SideBar";
+import { Sidebar } from "./Sidebar";
 
 export type Props = {
     children: React.ReactNode;
 };
 
 export function RootLayout() {
+
+    
+
     return (
         <div className="flex flex-row h-screen">
             <Sidebar/>

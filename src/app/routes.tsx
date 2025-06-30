@@ -4,4 +4,8 @@ export const ROUTES = {
   REGISTRATION: '/registration',
   TEAM_PULSE: '/team-pulse',
   TEAMS: '/teams',
+
+  API: {
+    API_URL: "http://localhost:5112/api/"
+  }
 }

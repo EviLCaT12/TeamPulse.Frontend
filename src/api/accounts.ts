@@ -1,10 +1,35 @@
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
+import { ROUTES } from "../app/routes";
+import type { Envelope } from "../models/Envelope";
+import type { LoginResponse } from "../models/LoginResponse";
+import { api } from "./api";
 
-const API_URL: string = "http://localhost:5112/api/"; 
 
-export async function getUsers() {
-    const response = await axios.get<string[]>(API_URL + "users");
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+export class AccountService {
+    static async login(
+        email: string,
+        password: string
+        ) : Promise<AxiosResponse<Envelope<LoginResponse>>> {
+        return axios.post<Envelope<LoginResponse>>(ROUTES.API.API_URL + "account/login", {
+            email,
+            password
+        },
+        {
+          withCredentials: true  
+        });
+    }
 
-    return  response.data;
+    static async refresh() {
+        return axios.post<Envelope<LoginResponse>>(
+            ROUTES.API.API_URL + "account/refresh",
+            {},
+            {
+                withCredentials: true
+            }
+        );
+    }
+
+    static async logout() {
+        return api.post<Envelope<LoginResponse>>("account/logout")
+        }
 }
