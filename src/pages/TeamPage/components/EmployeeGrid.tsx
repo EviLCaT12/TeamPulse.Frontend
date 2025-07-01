@@ -1,14 +1,15 @@
 import { Box } from "@mui/material";
 import { EmployeeCard } from "./EmployeeCard";
 import type React from "react";
-import type { User } from "../../../models/user";
+import type { Employee } from "../../../modules/teams/employeeSlice";
 
 type EmployeeGridProps = {
-  employees: User[];
+  employees: Employee[];
 };
 
 
 export const EmployeeGrid: React.FC<EmployeeGridProps> = ({ employees }) => {
+  const employeesArray = Array.isArray(employees) ? employees : [employees];
   return (
     <Box
       sx={{
@@ -17,13 +18,14 @@ export const EmployeeGrid: React.FC<EmployeeGridProps> = ({ employees }) => {
         gap: 2,
       }}
     >
-      {employees.map((emp) => (
+      {employeesArray.map((emp) => (
         <EmployeeCard
           key={emp.id}
           id={emp.id}
-          userName={emp.userName}
-          email={emp.email}
-          position={emp.position}
+          isHeadOfTeam={emp.isHeadOfTeam}
+          isHeadOfDepartment={emp.isHeadOfDepartment}
+          teamId={emp.teamId}
+          departmentId={emp.departmentId}
         />
       ))}
     </Box>

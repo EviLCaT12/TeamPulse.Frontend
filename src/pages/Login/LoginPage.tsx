@@ -25,7 +25,7 @@ export function Login(){
     const onSubmit = async (data: LoginInputs) => {
         await login(data.email, data.password);
 
-        navigate(ROUTES.TEAMS);
+        navigate(ROUTES.ROOT);
     }
 
     return (

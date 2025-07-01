@@ -31,6 +31,7 @@ export const AuthProvider = ({children} : Props) => {
                 ? `Bearer ${accessToken}`
                 : config.headers.Authorization;
                 
+            console.log(accessToken);
             return config;
         });
 

@@ -1,46 +1,27 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 import { EmployeeGrid } from "./components/EmployeeGrid";
-import type { User } from "../../models/user";
 import { AddEmployeeModalForm } from "./components/AddEmployeeForm";
-
-export const mockEmployees: User[] = [
-  {
-    id: "1",
-    userName: "Иван Иванов",
-    email: "ivan.ivanov@example.com",
-    position: "Frontend Developer",
-  },
-  {
-    id: "2",
-    userName: "Мария Смирнова",
-    email: "maria.smirnova@example.com",
-    position: "Backend Developer",
-  },
-  {
-    id: "3",
-    userName: "Олег Петров",
-    email: "oleg.petrov@example.com",
-    position: "Project Manager",
-  },
-  {
-    id: "4",
-    userName: "Елена Кузнецова",
-    email: "elena.kuznetsova@example.com",
-    position: "QA Engineer",
-  },
-  {
-    id: "5",
-    userName: "Алексей Фёдоров",
-    email: "alexey.fedorov@example.com",
-    position: "UI/UX Designer",
-  },
-];
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { setEmployees} from "../../modules/teams/employeeSlice";
+import { api } from "../../api/api";
 
 export const TeamPage = () => {
+  const dispatch = useAppDispatch();
+  const employees = useAppSelector((state) => state.employee.employees);
   const [open, setOpen] = useState<boolean>(false);
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => setOpen(true);
+
+  const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    api
+      .get("http://localhost:5112/api/Employee/83003b4c-b864-4d94-abc9-23099d90730f")
+      .then((res) => res.data)
+      .then((data) => dispatch(setEmployees(data.result)));
+
+  }, [dispatch]);
 
   return (
     <div className="p-6">
@@ -50,9 +31,12 @@ export const TeamPage = () => {
           Добавить сотрудника
         </Button>
       </div>
-      <EmployeeGrid employees={mockEmployees}></EmployeeGrid>
-      
-      <AddEmployeeModalForm open={open}></AddEmployeeModalForm>
+      <EmployeeGrid employees={employees}></EmployeeGrid>
+
+      <AddEmployeeModalForm
+        open={open}
+        handleClose={handleClose}
+      ></AddEmployeeModalForm>
     </div>
   );
 };

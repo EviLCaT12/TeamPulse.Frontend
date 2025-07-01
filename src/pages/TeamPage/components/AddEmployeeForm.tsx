@@ -2,11 +2,14 @@ import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 
 type AddEmployeeModalFormProps = {
     open: boolean;
+    handleClose: () => void;
 }
 
-export const AddEmployeeModalForm = ({open}: AddEmployeeModalFormProps) => {
+export function AddEmployeeModalForm (props: AddEmployeeModalFormProps){
   return (
-    <Modal open={open}>
+    <Modal 
+      open={props.open}
+      onClose={props.handleClose}>
       <Box
         className="bg-white p-6 rounded-lg shadow-lg"
         sx={{

@@ -6,13 +6,12 @@ import {
   Card,
 } from "@mui/material";
 import React from "react";
-import type { User } from "../../../models/user";
+import type { Employee } from "../../../modules/teams/employeeSlice";
 
-export const EmployeeCard: React.FC<User> = ({
-  id,
-  userName,
-  email,
-  position,
+export const EmployeeCard: React.FC<Employee> = ({
+    id,
+    isHeadOfTeam,
+    isHeadOfDepartment,
 }) => {
   return (
     <Card variant="outlined">
@@ -22,7 +21,7 @@ export const EmployeeCard: React.FC<User> = ({
             gutterBottom
             sx={{ color: "text.secondary", fontSize: 14 }}
           >
-            {userName}
+            {id}
           </Typography>
           <Typography
             sx={{
@@ -31,10 +30,10 @@ export const EmployeeCard: React.FC<User> = ({
               color: "text.primary",
             }}
           >
-            {email}
+            {isHeadOfTeam}
           </Typography>
           <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-            {position}
+            {isHeadOfDepartment}
           </Typography>
         </CardContent>
         <CardActions>
