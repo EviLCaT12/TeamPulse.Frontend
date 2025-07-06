@@ -7,7 +7,7 @@ export type Employee = {
     id: EmployeeId;
     isHeadOfTeam: boolean;
     isHeadOfDepartment: boolean;
-    teamId: string;
+    teamId: string;  
     departmentId: string;
 }
 
@@ -30,5 +30,3 @@ export const employeeSlice = createSlice({
 })
 
 export default employeeSlice.reducer;
-
-export const {setEmployees} = employeeSlice.actions;
